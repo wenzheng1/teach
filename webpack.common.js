@@ -3,22 +3,25 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
-        app: './src/app.js',
-        index : './src/index.js'
+        login : './src/login.js',
+        work : './src/work.js'
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            filename : 'index.htm',
-            template: './src/index.htm',
+            filename : 'login.htm',
+            template: './src/template.htm',
+            jsList : ['http://data.eat163.com/16.js'],
             inject : false,
             hash : true,
         }),
         new HtmlWebpackPlugin({
-            filename : 'app.htm',
-            template: './src/index.htm',
-            inject : false
-        })
+            filename : 'work.htm',
+            template: './src/template.htm',
+            jsList : ['http://data.eat163.com/16.js'],
+            inject : false,
+            hash : true,
+        }),
     ],
     output: {
         filename: '[name]-[hash].js',
