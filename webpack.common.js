@@ -4,7 +4,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
         login : './src/login.js',
-        work : './src/work.js'
+        work : './src/work.js',
+        index : './src/index.js',
+        'class' : './src/class.js',
+        'job' : './src/job.js'
     },
     plugins: [
         new CleanWebpackPlugin(),
@@ -17,6 +20,27 @@ module.exports = {
         }),
         new HtmlWebpackPlugin({
             filename : 'work.htm',
+            template: './src/template.htm',
+            jsList : ['http://data.eat163.com/16.js'],
+            inject : false,
+            hash : true,
+        }),
+        new HtmlWebpackPlugin({
+            filename : 'index.htm',
+            template: './src/template.htm',
+            jsList : ['http://data.eat163.com/16.js'],
+            inject : false,
+            hash : true,
+        }),
+        new HtmlWebpackPlugin({
+            filename : 'class.htm',
+            template: './src/template.htm',
+            jsList : ['http://data.eat163.com/16.js'],
+            inject : false,
+            hash : true,
+        }),
+        new HtmlWebpackPlugin({
+            filename : 'job.htm',
             template: './src/template.htm',
             jsList : ['http://data.eat163.com/16.js'],
             inject : false,

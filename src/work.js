@@ -16,8 +16,8 @@ class Page extends React.Component {
             };
         }
         lib.get('/teach/get-my-work.json' , {} , function(json){
-            let state = json.data[0];
-            state.data = JSON.parse(state.data || '{}');
+            let state = {};
+            state.data = JSON.parse(json.data || '{}');
             if(!state.data.work){
                 state.data.work = {}
             };
@@ -111,8 +111,8 @@ class Page extends React.Component {
     }
     save(){
         let self = this;
-        lib.post('work.php?method=save-work' , {
-            id : self.state.id , 
+        lib.post('/teach/save-work.json' , {
+            id : lib.getUser().id , 
             data : JSON.stringify(this.state.data)
         } , function(json){
             if(json.code == 0){
@@ -121,7 +121,6 @@ class Page extends React.Component {
             else{
                 lib.alert('提示框' , json.msg);
             }
-            console.log(json);
         });
     }
     go(item){
@@ -218,7 +217,7 @@ class Page extends React.Component {
                                 上传作业
                                 <input type="file" name="file" onChange={this.upload.bind(self , {})} />
                             </button>
-                            <button type="button" className="btn btn-default" onClick={this.save}>保存</button> 
+                            <button type="button" className="btn btn-default" onClick={this.save.bind(this)}>保存</button> 
                         </div>
                     )
                 }

@@ -5,7 +5,7 @@ import Dialog from "./dialog.js";
 import "./lib.js";
 class Nav extends React.Component{
 	componentDidMount(){
-		let user = lib.getUser();
+		let user = lib.getUser(true);
 		let src = window.location.href.split('/').reverse()[0];
 		let menu = [{
 			href : 'index.htm' ,
@@ -91,10 +91,6 @@ class Nav extends React.Component{
         	}
 			menu.push(item);
 		}
-		menu.push({
-			href : 'question.htm' ,
-            title : '题库'
-		})
 
 		for(var i=0; i<menu.length; i++){
 			if(window.location.href.split('/').reverse()[0] == menu[i].href){
@@ -107,7 +103,7 @@ class Nav extends React.Component{
 		})
 	}
 	logOut(){
-		lib.get('login.php?method=logout' , {} , function(){
+		lib.get('/teach/logout.json' , {} , function(){
 			window.location = 'login.htm';
 		})
 	}

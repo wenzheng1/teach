@@ -38,7 +38,7 @@ window.lib={
 				let key = b[i].split('=')[0].trim();
 				let value = b[i].split('=')[1].trim();
 				if(key == 'user'){
-					return JSON.parse(decodeURIComponent(atob(value)));
+					return JSON.parse(decodeURIComponent(atob(decodeURIComponent(value))));
 				}				 
 			}
 		}

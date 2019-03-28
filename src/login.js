@@ -115,7 +115,7 @@ class Page extends React.Component{
         } , function(json){
             if(json.code == 0){
                 console.log('登陆成功');
-                window.location = 'work.htm';
+                window.location = 'index.htm';
             }
             else if(json.code == 1){
                 login.id.error = 'has-error';
